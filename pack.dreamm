@@ -1,0 +1,6 @@
+pack[]:
+    name = Coktel Vision adventure and puzzle games
+    minversion = 4.0x21
+    author = eientei
+    link = https://github.com/einstein95/coktelvision-dreamm
+end
