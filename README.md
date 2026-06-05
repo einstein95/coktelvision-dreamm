@@ -24,7 +24,6 @@ Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https:
 | Gobliiins                                                                      	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Gobliins 2: The Prince Buffoon                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Goblin's Quest 3                                                               	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
-|
 
 > [!NOTE]
 > Manual-based copy protections aren't solved automatically like they are with the Lucas Arts games in DREAMM. But this will come eventually.
