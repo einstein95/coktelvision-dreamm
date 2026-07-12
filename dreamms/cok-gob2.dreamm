@@ -1,10 +1,10 @@
 //
 // Gobliins 2: The Prince Buffoon
 //
-desc[sol-gob2]:
+desc[cok-gob2]:
 
 name = Gobliins 2: The Prince Buffoon
-icon = sol-gob2.png
+icon = cok-gob2.png
 machine = pc
 osenv = dos
 rootpath = C:\

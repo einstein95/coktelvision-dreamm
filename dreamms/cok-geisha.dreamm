@@ -1,0 +1,35 @@
+//
+// Geisha
+//
+desc[cok-geisha]:
+
+name = Geisha
+icon = cok-geisha.png
+machine = pc
+osenv = dos
+rootpath = A:\
+launch = $(rootpath)\LOADER.EXE
+mips = $(MIPS_286_10)
+ramkb = 640
+audiohw = speaker
+filter = coktel vision, action
+videohw = vga
+
+
+//
+// filesystem
+//
+mount[]: vpath = A:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+game[es-it]:
+    name = Spanish/Italian
+    anchorfile = LOADER.EXE
+    file[]: crc = 2ba9e4ce; size =    203070; name = LOADER.EXE
+    file[]: crc = 365d106d; size =      2690; name = ALL.ASK
+    file[]: crc = 92347305; size =    212164; name = DISK1.STK
+    file[]: crc = 3a67883b; size =    312194; name = DISK2.STK
+    file[]: crc = c5caa6d7; size =    304034; name = DISK3.STK
+end
+
+end

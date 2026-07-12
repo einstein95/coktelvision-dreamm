@@ -1,0 +1,135 @@
+//
+// Asterix: Operation Getafix
+// Astérix: Le Coup du Menhir
+// Astérix: Operation Hinkelstein
+// Astérix: El Golpe del Menhir
+//
+desc[cok-astgetafix]:
+
+name = Asterix: Operation Getafix
+icon = cok-astgetafix.png
+machine = pc
+osenv = dos
+rootpath = A:\
+launch = $(rootpath)\LOADER.EXE
+mips = $(MIPS_286_10)
+ramkb = 640
+audiohw = speaker
+filter = coktel vision, action
+videohw = vga
+
+
+// 1 - Black
+// 2 - White
+// 3 - Yellow
+// 4 - Green
+// 5 - Blue
+// 6 - Red
+// 7 - Gray
+// 8 - Brown
+
+// Region: BszPX0zR7
+// scraper_string("BszPX0zR7", "asterix", 1)
+
+charset[asterix]:
+    height = 8
+    char[0]: bits = 0e`1f`21`21`21`3e`1c
+    char[1]: bits = 10`3f`3f
+    char[2]: bits = 11`23`23`25`3d`19`02
+    char[3]: bits = 22`41`49`49`7f`36
+    char[4]: bits = 04`0c`14`24`7f`7f`04`04
+    char[5]: bits = 79`79`49`49`49`4f`46
+    char[6]: bits = 06`0f`19`29`49`0f`06
+    char[7]: bits = 20`41`47`4e`58`70`60
+    char[8]: bits = 12`3f`49`49`49`37`32
+    char[9]: bits = 18`3c`45`47`46`7c`38
+    char[A]: bits = 41`83`8e`bc`e4`7e`0f`01
+    char[B]: bits = 40`81`ff`91`91`91`92`6c
+    char[C]: bits = 18`3c`46`83`81`81`81`82
+    char[D]: bits = 40`81`ff`ff`81`81`42`3c
+end
+
+script[cp]:
+    condition = 1
+    code = [[[$(CRLF)
+        wait("update");
+        cp_string = cpu_readmem($$(CP_OFFSET), 5);
+        overlay_show(0, 1, cp_string, 1);
+    ]]]
+end
+
+
+//
+// filesystem
+//
+mount[]: vpath = A:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+fragment[datafiles]:
+    file[]: crc = 5cf03766; size =   2093; name = XYZ.COL
+
+    file[]: crc = 81fda42a; size =   1556; name = JEUCAR1.LET
+    file[]: crc = 36e91927; size =   1557; name = JEUCAR3.LET
+
+    file[]: crc = 258fc22c; size =  11686; name = A.SND
+    file[]: crc = 931c2f42; size =   2114; name = BR1.SND
+    file[]: crc = 968c7dae; size =   1984; name = BR2.SND
+    file[]: crc = a358f7a9; size =   1622; name = BR3.SND
+    file[]: crc = 2f644935; size =  11814; name = C.SND
+    file[]: crc = f2b328c3; size =    678; name = COUP.SND
+    file[]: crc = 62b4cb11; size =   2540; name = CRISAN.SND
+    file[]: crc = 5f619cad; size =   2856; name = ENCLUME.SND
+    file[]: crc = f6f89a58; size =    914; name = EPEE.SND
+    file[]: crc = 095b1ceb; size =   1976; name = FUITE.SND
+    file[]: crc = ca436172; size =   1862; name = GLOUP.SND
+    file[]: crc = fa551869; size =   1870; name = METAL.SND
+    file[]: crc = 303e93c7; size =   2838; name = OU.SND
+    file[]: crc = 422550a1; size =   1846; name = POING.SND
+    file[]: crc = eedbc957; size =   1404; name = REPAS.SND
+    file[]: crc = f6ff78a9; size =   8762; name = RIRE.SND
+    file[]: crc = 06cdbe69; size =   1496; name = SANGLIER.SND
+    file[]: crc = 9e6c8843; size =   8460; name = TONERRE.SND
+    file[]: crc = 1bd30438; size =   8128; name = TRALA.SND
+    file[]: crc = 748387b5; size =  11650; name = X.SND
+
+    file[]: crc = cd43ecc9; size =  20477; name = INTRO.STK
+    file[]: crc = d092cbeb; size =  48959; name = INTROCMP.STK
+    file[]: crc = 4a6c7f58; size =  39059; name = JEU.STK
+    file[]: crc = eddf7a32; size = 310630; name = JEUCMP.STK
+end
+
+game[en]:
+    name = English
+    anchorfile = LOADER.EXE
+    CP_OFFSET = 0x2E26E
+    imports = datafiles
+    file[]: crc = b45383f0; size = 161075; name = LOADER.EXE
+end
+
+game[fr]:
+    name = French
+    anchorfile = LOADER.EXE
+    CP_OFFSET = 0x2F3F7
+    imports = datafiles
+    file[]: crc = ce392d1e; size = 165813; name = LOADER.EXE
+end
+
+game[es]:
+    name = Spanish
+    anchorfile = LOADER.EXE
+    CP_OFFSET = 0x2E204
+    imports = datafiles
+    file[]: crc = 685bdd8d; size =   1556; name = JEUCAR1.LET
+    file[]: crc = 2249f076; size =   1556; name = JEUCAR3.LET
+    file[]: crc = 808ad761; size = 160963; name = LOADER.EXE
+end
+
+game[it]:
+    name = Italian
+    anchorfile = LOADER.EXE
+    CP_OFFSET = 0x2EC6E
+    imports = datafiles
+    file[]: crc = 8e85008f; size = 163105; name = LOADER.EXE
+end
+
+end

@@ -1,18 +1,18 @@
 //
 // Gobliiins
 //
-desc[sol-gob1]:
+desc[cok-gob1]:
 
 name = Gobliiins
-icon = sol-gob1.png
+icon = cok-gob1.png
 machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\LOADER.EXE VGA MOUSE LG_US SOUND $(SOUND) 
 mips = $(MIPS_486DX_33)
 ramkb = 8192
-filter = coktel vision, sierra, puzzle
 videohw = vga
+filter = coktel vision, puzzle
 
 //
 // sound configuration

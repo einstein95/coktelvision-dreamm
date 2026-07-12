@@ -1,0 +1,65 @@
+//
+// Emmanuelle
+//
+desc[cok-emmanuelle]:
+
+name = Emmanuelle
+icon = cok-emmanuelle.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\LOADER.COM
+mips = $(MIPS_286_10)
+ramkb = 640
+audiohw = speaker
+filter = coktel vision, action
+videohw = ega
+
+config[video]:
+    title = Video Configuration
+    option[cga]:   name = $(CGA_NAME);    videohw = cga; VIDEO = 1
+    option[tandy]: name = $(TVIDEO_NAME); videohw = cga; VIDEO = 1; machine = tandy
+    option[ega]:   name = $(EGA_NAME);    videohw = ega; VIDEO = 2; priority = 1
+end
+
+dynamicfile[]:
+    path = C:\CARTE.INF
+    // 00    Monochrome
+    // 01    CGA / Tandy
+    // 02    EGA
+    // 03    Amstrad PC1512
+    // 04    Amstrad PC1640
+    contents = [[[
+        [[BINARY:$(VIDEO) 0]]
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+game[en]:
+    name = English
+    anchorfile = LOADER.COM
+    file[]: crc = fb7c5c60; size =     57868; name = LOADER.COM
+    file[]: crc = 21ae344d; size =     36736; name = INIT.I01
+    file[]: crc = cc37bcff; size =     26368; name = INIT.TOT
+    file[]: crc = cf55dabf; size =      1557; name = JEUCAR2.LET
+    file[]: crc = 36e91927; size =      1557; name = JEUCAR3.LET
+    file[]: crc = c50fd613; size =     19584; name = LOADAERO.I00
+    file[]: crc = 20baa170; size =     46336; name = LOADAERO.TOT
+    file[]: crc = 868b2724; size =     54400; name = LOADCAS.I00
+    file[]: crc = d4f588b5; size =     33664; name = LOADCAS.TOT
+    file[]: crc = 7a375aab; size =     35712; name = LOADCHUT.TOT
+    file[]: crc = b23875e0; size =     31616; name = LOADFAV.TOT
+    file[]: crc = e5375256; size =     48768; name = LOADGAR.TOT
+    file[]: crc = 0018e581; size =     88448; name = LOADHOT.I00
+    file[]: crc = 5ca7dbc7; size =     53888; name = LOADHOT.TOT
+    file[]: crc = f43dad1c; size =      6784; name = LOADPLA.I00
+    file[]: crc = 0bee6458; size =     58112; name = LOADPLA.TOT
+    file[]: crc = 32697455; size =     20736; name = RECUP.TOT
+end
+
+end

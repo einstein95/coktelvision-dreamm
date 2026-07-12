@@ -1,0 +1,40 @@
+//
+// Asterix and the Magic Potion
+//
+desc[cok-astpotion]:
+
+name = Astérix et la Potion Magique
+icon = cok-astpotion.png
+machine = pc
+osenv = dos
+rootpath = A:\
+launch = $(rootpath)\LOADER.COM
+mips = $(MIPS_8086)
+ramkb = 640
+audiohw = speaker
+filter = coktel vision, action
+videohw = cga
+
+//
+// filesystem
+//
+mount[]: vpath = A:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+game[fr]:
+    name = French // KBI copy protection
+    anchorfile = LOADER.COM
+    file[]: crc = 3cdfa147; size =     30231; name = LOADER.COM
+    file[]: crc = 96ce7f64; size =      1920; name = DECO.BIN
+    file[]: crc = 88da0624; size =      4096; name = DEFECR.BIN
+    file[]: crc = 9672dc31; size =     16384; name = FINPC.BIN
+    file[]: crc = 01ab9bb0; size =       128; name = GD.BIN
+    file[]: crc = b8207e6e; size =     18816; name = TAGEN.BIN
+    file[]: crc = fe443546; size =       128; name = TAH.BIN
+    file[]: crc = d13efe87; size =       128; name = TAL.BIN
+    file[]: crc = ec2cbff7; size =      8192; name = TAPAV.BIN
+    file[]: crc = 48CA911A;                   name = FTRACK39SIDE1.~RAW~
+
+end
+
+end

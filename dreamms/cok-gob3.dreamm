@@ -1,10 +1,10 @@
 //
 // Goblin's Quest 3
 //
-desc[sol-gob3]:
+desc[cok-gob3]:
 
 name = Goblin's Quest 3
-icon = sol-gob3.png
+icon = cok-gob3.png
 machine = pc
 osenv = dos
 rootpath = C:\

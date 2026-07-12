@@ -1,0 +1,93 @@
+//
+// Indian Mission
+//
+desc[cok-indianmission]:
+
+name = Indian Mission
+icon = cok-indianmission.png
+machine = pc
+osenv = dos
+rootpath = A:\
+launch = $(rootpath)\LOADER.COM
+mips = $(MIPS_286_10)
+ramkb = 640
+audiohw = speaker
+filter = coktel vision, action
+
+//
+// filesystem
+//
+mount[]: vpath = A:\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+config[graphics]:
+    title = Graphics Configuration
+    option[cga]:   name = $(CGA_NAME);    videohw = cga; VIDEO_CONFIG = 1
+    option[tandy]: name = $(TVIDEO_NAME); videohw = cga; VIDEO_CONFIG = 1; machine = tandy
+    option[ega]:   name = $(EGA_NAME);    videohw = ega; VIDEO_CONFIG = 2; priority = 1
+    option[mono]:  name = "Monochrome";   videohw = cga; VIDEO_CONFIG = 0
+end
+
+dynamicfile[]:
+    path = A:\carte.inf
+    // 00 = Monochrome
+    // 01 = CGA / Tandy 1000 SX
+    // 02 = EGA
+    // 03 = Amstrad PC1512
+    // 
+    contents = [[[
+        [[BINARY:$(VIDEO_CONFIG) 0x00]]
+    ]]]
+end
+
+game[fr]:
+    name = French // KBI copy protection
+    anchorfile = LOADER.COM
+    file[]: crc = 8d6b03d8; size =     55710; name = LOADER.COM
+    file[]: crc = 71047893; size =      1024; name = LETTRES.BIN
+    file[]: crc = e59330d0; size =     18688; name = COMMUN.I07
+    file[]: crc = c09f0f58; size =     10496; name = MAVLOA10.I00
+    file[]: crc = ebe2910a; size =     12288; name = MAVLOA10.TOT
+    file[]: crc = f954e52c; size =     11520; name = MAVLOA11.I00
+    file[]: crc = c9969117; size =     12416; name = MAVLOA11.TOT
+    file[]: crc = 7bc872da; size =     14464; name = MAVLOA12.I00
+    file[]: crc = 618130b8; size =     13440; name = MAVLOA12.TOT
+    file[]: crc = 40a444a1; size =     10112; name = MAVLOA13.I00
+    file[]: crc = 270d22fc; size =     15232; name = MAVLOA13.TOT
+    file[]: crc = abeea4c9; size =      8448; name = MAVLOA14.I00
+    file[]: crc = 0ce26e49; size =     10368; name = MAVLOA14.TOT
+    file[]: crc = 3c8904b9; size =     14464; name = MAVLOA15.I00
+    file[]: crc = e555d736; size =     13568; name = MAVLOA15.TOT
+    file[]: crc = 07ec7890; size =      8448; name = MAVLOA16.I00
+    file[]: crc = 09f02bbd; size =     10240; name = MAVLOA16.TOT
+    file[]: crc = 6da29740; size =     13312; name = MAVLOA17.I00
+    file[]: crc = 8242eb0b; size =     18688; name = MAVLOA17.TOT
+    file[]: crc = 52ca8a74; size =      9088; name = MAVLOA18.I00
+    file[]: crc = 6bc6e7c4; size =     14720; name = MAVLOA18.TOT
+    file[]: crc = 8f951436; size =     13568; name = MAVLOA19.I00
+    file[]: crc = eba4c3f5; size =     19200; name = MAVLOA19.TOT
+    file[]: crc = b3f09f42; size =       384; name = MAVLOA20.TOT
+    file[]: crc = 2cadee27; size =     12160; name = MAVLOAD.TOT
+    file[]: crc = ba923b26; size =      3072; name = MAVLOAD0.TOT
+    file[]: crc = 328f50cd; size =     12288; name = MAVLOAD1.I00
+    file[]: crc = f74b64d3; size =      9728; name = MAVLOAD1.TOT
+    file[]: crc = d5d55682; size =     17152; name = MAVLOAD2.I00
+    file[]: crc = 0d855649; size =     12032; name = MAVLOAD2.TOT
+    file[]: crc = 973fdfeb; size =      8320; name = MAVLOAD3.I00
+    file[]: crc = e3e42664; size =      7552; name = MAVLOAD3.TOT
+    file[]: crc = 78705b68; size =     14080; name = MAVLOAD4.I00
+    file[]: crc = a8a21459; size =     11136; name = MAVLOAD4.TOT
+    file[]: crc = c5457c88; size =      7040; name = MAVLOAD5.I00
+    file[]: crc = f2bbd42e; size =      5888; name = MAVLOAD5.TOT
+    file[]: crc = 548d3320; size =     15104; name = MAVLOAD6.I00
+    file[]: crc = 238b8600; size =     13056; name = MAVLOAD6.TOT
+    file[]: crc = 908fc0ff; size =     14208; name = MAVLOAD7.I00
+    file[]: crc = 352f439f; size =     15872; name = MAVLOAD7.TOT
+    file[]: crc = 2f1d5e0b; size =     10112; name = MAVLOAD8.I00
+    file[]: crc = c977529d; size =     19072; name = MAVLOAD8.TOT
+    file[]: crc = a9d1d39e; size =     11776; name = MAVLOAD9.I00
+    file[]: crc = 54a25e60; size =     12288; name = MAVLOAD9.TOT
+    file[]: crc = 7A0E332A;                   name = FTRACK39SIDE1.~RAW~
+end
+
+end
