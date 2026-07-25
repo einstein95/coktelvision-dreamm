@@ -36,16 +36,21 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\MDO.CFG
-    contents = [[[
-        [[BINARY:0x00 0x00 0x13 0x00 $(SOUND) 0x00 0x01 0x01 0x00 0x07 0x00 0x13 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x05 0x00 0x00]]
+CONFIGFILE = [[[
+    [[BINARY:0x00 0x00 0x13 0x00 $(SOUND) 0x00 0x01 0x01 0x00 0x07 0x00 0x13 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x05 0x00 0x00]]
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\MDO.CFG", "$$(CONFIGFILE)");
     ]]]
 end
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMM.BAT
-    contents = COPY DISK3.$00+DISK3.$01 DISK3.STK
+script[mergedisk3]:
+    condition = is_installer() && file_exists("$$(rootpath)\\DISK3.$00")
+    code = [[[$(CRLF)
+        file_copy("$$(rootpath)\\DISK3.STK", "$$(rootpath)\\DISK3.$00", "$$(rootpath)\\DISK3.$01");
+    ]]]
 end
 
 //
@@ -77,8 +82,7 @@ end
 installer[v1.0-int-2.10.93-2x1.44m-installer]:
     name = v1.0, Int. 2.10.93, 2x1.44M, Installer
     installid = v1.0-int-2.10.93-2x1.44m
-    launch = $(rootpath)\DREAMM.BAT
-    anchorfile = DISK2.STK
+    anchorfile = DISK3.$00
     file[]: crc = 73d7f23a; size =     12952; name = ALL.ASK
     file[]: crc = 11549a07; size =    970686; name = DISK2.STK
     file[]: crc = 6ceb914c; size =    311296; name = DISK3.$00

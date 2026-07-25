@@ -14,31 +14,13 @@ ramkb = 640
 audiohw = speaker
 filter = coktel vision, action
 
+$(include conf-carte.inc)
+
 //
 // filesystem
 //
 mount[]: vpath = A:\; srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-
-config[graphics]:
-    title = Graphics Configuration
-    option[cga]:   name = $(CGA_NAME);    videohw = cga; VIDEO_CONFIG = 1
-    option[tandy]: name = $(TVIDEO_NAME); videohw = cga; VIDEO_CONFIG = 1; machine = tandy
-    option[ega]:   name = $(EGA_NAME);    videohw = ega; VIDEO_CONFIG = 2; priority = 1
-    option[mono]:  name = "Monochrome";   videohw = cga; VIDEO_CONFIG = 0
-end
-
-dynamicfile[]:
-    path = A:\carte.inf
-    // 00 = Monochrome
-    // 01 = CGA / Tandy 1000 SX
-    // 02 = EGA
-    // 03 = Amstrad PC1512
-    // 
-    contents = [[[
-        [[BINARY:$(VIDEO_CONFIG) 0x00]]
-    ]]]
-end
 
 game[fr]:
     name = French // KBI copy protection
@@ -87,7 +69,7 @@ game[fr]:
     file[]: crc = c977529d; size =     19072; name = MAVLOAD8.TOT
     file[]: crc = a9d1d39e; size =     11776; name = MAVLOAD9.I00
     file[]: crc = 54a25e60; size =     12288; name = MAVLOAD9.TOT
-    file[]: crc = 7A0E332A;                   name = FTRACK39SIDE1.~RAW~
+    file[]: crc = 7a0e332a;                   name = FTRACK39SIDE1.~RAW~
 end
 
 end
