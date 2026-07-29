@@ -1,0 +1,32 @@
+name: Package DreammPack Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Zip visible files
+        run: |
+          zip -r coktelvision.dreammpack . \
+            -x ".*" \
+            -x ".*/*"
+
+      - name: Create/Update "latest" Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          target_commitish: ${{ github.sha }}
+          name: Latest Build
+          body: |
+            Automatically generated from the latest push to `main` (commit ${{ github.sha }}).
+          files: coktelvision.dreammpack
